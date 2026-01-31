@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tanzania Locations UI</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <div class="logo">TZ</div>
+        <div>
+          <h1>Tanzania Locations</h1>
+          <p class="muted">Regions → Districts → Wards → Streets</p>
+        </div>
+      </div>
+
+      <div class="health" id="healthBox">
+        <span class="dot" id="healthDot"></span>
+        <span id="healthText">Checking API…</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <section class="card">
+      <h2>Browse</h2>
+
+      <div class="row">
+        <label>Region</label>
+        <select id="regionSelect">
+          <option value="">Loading regions…</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label>District</label>
+        <select id="districtSelect" disabled>
+          <option value="">Select a region first</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label>Ward</label>
+        <select id="wardSelect" disabled>
+          <option value="">Select a district first</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label>Street</label>
+        <select id="streetSelect" disabled>
+          <option value="">Select a ward first</option>
+        </select>
+      </div>
+
+      <div class="actions">
+        <button id="copyPathBtn" disabled>Copy selected path</button>
+        <button class="ghost" id="resetBtn">Reset</button>
+      </div>
+
+      <div class="result">
+        <div class="muted small">Selected path</div>
+        <pre id="pathBox">—</pre>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Search</h2>
+
+      <div class="row">
+        <label>Keyword</label>
+        <input id="searchInput" type="text" placeholder="e.g. buguruni, ilala, arusha…" minlength="2" />
+      </div>
+
+      <div class="row">
+        <label>Level</label>
+        <select id="levelSelect">
+          <option value="all">All</option>
+          <option value="region">Region</option>
+          <option value="district">District</option>
+          <option value="ward">Ward</option>
+          <option value="street">Street</option>
+        </select>
+      </div>
+
+      <div class="actions">
+        <button id="searchBtn">Search</button>
+        <button class="ghost" id="clearSearchBtn">Clear</button>
+      </div>
+
+      <div class="result">
+        <div class="muted small">Results</div>
+        <div id="resultsBox" class="results"></div>
+      </div>
+    </section>
+
+    <section class="card full">
+      <h2>Quick API Links</h2>
+      <div class="links">
+        <a href="/docs" target="_blank" rel="noreferrer">Swagger Docs</a>
+        <a href="/redoc" target="_blank" rel="noreferrer">ReDoc</a>
+        <a href="/health" target="_blank" rel="noreferrer">/health</a>
+        <a href="/regions" target="_blank" rel="noreferrer">/regions</a>
+      </div>
+      <p class="muted small">
+        Tip: If you host behind a reverse proxy, keep these paths open.
+      </p>
+    </section>
+  </main>
+
+  <footer class="wrap footer muted small">
+    Built with FastAPI + plain HTML/CSS/JS.
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
